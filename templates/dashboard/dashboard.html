@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Dashboard
+</h1>
+
+<div class="row">
+
+    <div class="col-md-3">
+
+        <div class="card shadow-sm p-3">
+
+            <h5>Total Tasks</h5>
+
+            <h2>{{ total_tasks }}</h2>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow-sm p-3">
+
+            <h5>Completed</h5>
+
+            <h2>{{ completed_tasks }}</h2>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow-sm p-3">
+
+            <h5>Pending</h5>
+
+            <h2>{{ pending_tasks }}</h2>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card shadow-sm p-3">
+
+            <h5>Overdue</h5>
+
+            <h2>{{ overdue_tasks }}</h2>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr class="my-5">
+
+<h3 class="mb-3">
+    Recent Tasks
+</h3>
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+
+            <th>Title</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Assigned To</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for task in tasks %}
+
+        <tr>
+
+            <td>{{ task.title }}</td>
+
+            <td>{{ task.status }}</td>
+
+            <td>{{ task.priority }}</td>
+
+            <td>{{ task.assigned_to }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

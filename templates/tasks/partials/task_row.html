@@ -1,0 +1,75 @@
+<tr id="task-row-{{ task.id }}">
+
+    <td>
+        {{ task.title }}
+    </td>
+
+    <td>
+        {{ task.project.name }}
+    </td>
+
+    <td>
+
+        <form
+            hx-post="/tasks/update-status/{{ task.id }}/"
+            hx-target="#task-row-{{ task.id }}"
+            hx-swap="outerHTML"
+        >
+
+            {% csrf_token %}
+
+            <select
+                name="status"
+                class="form-select"
+                onchange="this.form.requestSubmit()"
+            >
+
+                <option value="todo"
+                    {% if task.status == 'todo' %}
+                        selected
+                    {% endif %}
+                >
+                    Todo
+                </option>
+
+                <option value="in_progress"
+                    {% if task.status == 'in_progress' %}
+                        selected
+                    {% endif %}
+                >
+                    In Progress
+                </option>
+
+                <option value="done"
+                    {% if task.status == 'done' %}
+                        selected
+                    {% endif %}
+                >
+                    Done
+                </option>
+
+            </select>
+
+        </form>
+
+    </td>
+
+    <td>
+
+        {{ task.priority }}
+
+    </td>
+
+    <td>
+
+        {{ task.assigned_to.username }}
+
+    </td>
+
+    <td>
+
+        {{ task.due_date }}
+
+    </td>
+
+</tr>
