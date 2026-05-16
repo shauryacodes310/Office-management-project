@@ -143,4 +143,4 @@ The application is deployed on Railway.
 
 ## Author
 
-Rajan Saini
+Shaurya Singh
